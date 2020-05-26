@@ -9,7 +9,7 @@ import boardgame.Position;
  * mesmo sabendo que um tabuleiro é uma matriz, temos de respeitar as regras de ne-
  * gócios e implementar a solução devida. Uma posição no xadrez é dada como uma le-
  * tra e um número, sendo a letra o eixo das abcissas (X) e o número o eixo das or-
- * denadas (Y), ou, se preferir, letra equivale a 'i' e número a 'j'.
+ * denadas (Y), ou, se preferir, letra equivale a 'j' e número a 'i'.
  */
 public class ChessPosition {
 	private char column;
