@@ -51,6 +51,27 @@ public class Board {
 		piece.position = position;
 	}
 	
+	//método para remover uma peça
+	public Piece removePiece(Position pos) {
+		if(!positionExists(pos)) {
+			throw new BoardException("Error: no position found");
+		}
+		if(piece(pos) == null) {
+			return null;
+		}
+		
+		Piece aux = piece(pos);
+			
+		//a posição dessa peça agora é nula
+			aux.position = null;
+			
+		//agora fazemo-os definitivamente na matriz de peças
+			pieces[pos.getRow()][pos.getColumn()] = null;
+			
+		//apenas auxilia na demonstração da remoção da peça
+			return aux;
+	}
+	
 	//método para verificar a existência de uma dada posição
 	public boolean positionExists(int row, int column) {
 		//linha (row) tem que ser maior que 0; e linha tem que ser menor que a quantidade de linhas do tabuleiro (rows) || mesmo para column.
