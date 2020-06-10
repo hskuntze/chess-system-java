@@ -36,12 +36,29 @@ public class ChessMatch {
 		if(!board.positionExists(position)) {
 			throw new ChessException("There is no piece on source position");
 		}
+		if(!board.piece(position).isThereAnyPossibleMove()) {
+			throw new ChessException("There is no possible move");
+		}
+	}
+	
+	private void validateTargetPosition(Position src, Position trt) {
+		if(!board.piece(src).possibleMove(trt)) { //"SE para a peça de origem a posição de destino NÃO (!) estiver disponivel {...} 
+			throw new ChessException("The selected piece can't move to target position!");
+		}
+	}
+	
+	//método que exibirá os movimentos possíveis de uma peça no 'Program'
+	public boolean[][] possibleMoves(ChessPosition source) {
+		Position pos = source.toPosition();
+		validateSourcePosition(pos);
+		return board.piece(pos).possibleMoves();
 	}
 	
 	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
-		Position src = sourcePosition.toPosition();
+		Position src = sourcePosition.toPosition(); //basicamente um casting
 		Position trt = targetPosition.toPosition();
 		validateSourcePosition(src);
+		validateTargetPosition(src,trt);
 		Piece capturedPiece = makeMove(src, trt);
 		return (ChessPiece) capturedPiece;
 	}
