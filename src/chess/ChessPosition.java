@@ -40,7 +40,6 @@ public class ChessPosition {
 		this.row = row;
 	}
 	
-	
 	/* A lógica por trás do método toPosition é bem simples:
 	 * 
 	 * A linha (row) vai de 1 a 8, mas em matrizes/arrays (classe Positon), vai de 0 a 7, o truque é simplesmente -
@@ -62,7 +61,7 @@ public class ChessPosition {
 	
 	// Agora a operação inversa: dada uma posição de matriz, converter para posição do tabuleiro
 	protected static ChessPosition fromPosition(Position position) {
-		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
+		return new ChessPosition((char)('a' + position.getColumn()), 8 - position.getRow());
 	}
 	
 	@Override
